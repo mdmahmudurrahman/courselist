@@ -5,6 +5,7 @@ class CoursesController < ApplicationController
     begin
       response = Net::HTTP.get(uri)
       @courses = JSON.parse(response)["data"]
+      @courses = Kaminari.paginate_array(@courses).page(params[:page])
     rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
       Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => error
       redirect_to courses_path
