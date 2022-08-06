@@ -21,7 +21,7 @@
         <% @courses.each_with_index do |course, index| %>
           <tr>
             <td scope="row"><%= index + 1 %></td>
-            <td><%= link_to "#{course["attributes"]["name"]}", course["attributes"]["url"], target: "_blank" %></td>
+            <td><%= link_to "#{course[:name]}", course[:url], target: "_blank" %></td>
           </tr>
         <% end %>
       </tbody>
