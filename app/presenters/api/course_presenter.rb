@@ -4,12 +4,12 @@ class Api::CoursePresenter
   end
 
   def format_response
-    @object.map { |course|  as_json course["attributes"] }
+    @object.map { |course|  course_info course["attributes"] }
   end
 
   private
 
-  def as_json course_attributes
+  def course_info course_attributes
     {
       name: course_attributes["name"],
       url: course_attributes["url"]
