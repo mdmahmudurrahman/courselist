@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3>Course List</h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <table class="table table-success table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @courses.each_with_index do |course, index| %>
+          <tr>
+            <td scope="row"><%= index + 1 %></td>
+            <td><%= link_to "#{course["attributes"]["name"]}", course["attributes"]["url"], target: "_blank" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
