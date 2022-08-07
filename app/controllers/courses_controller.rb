@@ -9,7 +9,7 @@ class CoursesController < ApplicationController
         response = Net::HTTP.get(uri)
         @response = JSON.parse(response)["data"].nil? ? [] : JSON.parse(response)["data"]
         @courses = Api::CoursePresenter.new(@response).format_response
-        @courses = Kaminari.paginate_array(@courses).page(params[:page])
+        Kaminari.paginate_array(@courses).page(params[:page])
       end
     rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
       Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => error
